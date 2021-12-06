@@ -6,7 +6,7 @@ on:
       version:
         description: 'version'
         required: true
-        default: 'master'
+        default: 'main'
       frpc-tags:
         description: 'frpc-tags'
         required: true
@@ -57,7 +57,7 @@ jobs:
           platforms: linux/amd64,linux/arm64
           build-args: |
             FRP_VERSION=${{ github.event.inputs.version }}
-            MODE=frpc
+            MODE="frpc"
           push: true
           tags: ${{ github.event.inputs.frpc-tags }}
 
@@ -68,6 +68,6 @@ jobs:
           platforms: linux/amd64,linux/arm64
           build-args: |
             FRP_VERSION=${{ github.event.inputs.version }}
-            MODE=frps
+            MODE="frps"
           push: true
           tags: ${{ github.event.inputs.frps-tags }}
