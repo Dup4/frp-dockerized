@@ -6,7 +6,7 @@ on:
       version:
         description: 'version'
         required: true
-        default: 'main'
+        default: 'master'
       frpc-tags:
         description: 'frpc-tags'
         required: true
