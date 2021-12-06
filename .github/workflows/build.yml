@@ -55,9 +55,9 @@ jobs:
         with:
           file: Dockerfile
           platforms: linux/amd64,linux/arm64
-          build-args:
-            FRP_VERSION: ${{ github.event.inputs.version }}
-            MODE: frpc
+          build-args: |
+            FRP_VERSION=${{ github.event.inputs.version }}
+            MODE=frpc
           push: true
           tags: ${{ github.event.inputs.frpc-tags }}
 
@@ -66,8 +66,8 @@ jobs:
         with:
           file: Dockerfile
           platforms: linux/amd64,linux/arm64
-          build-args:
-            FRP_VERSION: ${{ github.event.inputs.version }}
-            MODE: frps
+          build-args: |
+            FRP_VERSION=${{ github.event.inputs.version }}
+            MODE=frps
           push: true
           tags: ${{ github.event.inputs.frps-tags }}
