@@ -1,6 +1,8 @@
 # frp-dockerized
 
-## Usage
+## frps
+
+[![](https://dockeri.co/image/dup4/frps)](https://hub.docker.com/r/snowdreamtech/frps)
 
 start frpc:
 
@@ -13,6 +15,10 @@ docker run \
     -v ${PWD}/frps.ini:/root/frps.ini \
     dup4/frps
 ```
+
+## frpc
+
+[![](https://dockeri.co/image/dup4/frpc)](https://hub.docker.com/r/snowdreamtech/frpc)
 
 start frpc:
 
