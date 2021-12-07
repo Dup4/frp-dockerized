@@ -7,18 +7,18 @@ on:
         description: 'version'
         required: true
         default: 'dev'
-      frpc-tags:
-        description: 'frpc-tags'
+      tags:
+        description: 'tags'
         required: true
-        default: 'dup4/frpc:latest'
-      frps-tags:
-        description: 'frps-tags'
-        required: true
-        default: 'dup4/frps:latest'
+        default: 'latest'
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        mode: ["frpc", "frps"]
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -50,24 +50,13 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build and Push Frpc
+      - name: Build and Push ${{ matrix.mode }}
         uses: docker/build-push-action@v2
         with:
           file: Dockerfile
           platforms: linux/amd64,linux/arm64,linux/riscv64,linux/ppc64le,linux/s390x,linux/386,linux/mips64le,linux/mips64,linux/arm/v7,linux/arm/v6
           build-args: |
             "FRP_VERSION=${{ github.event.inputs.version }}"
-            "MODE=frpc"
+            "MODE=${{ matrix.mode }}"
           push: true
-          tags: ${{ github.event.inputs.frpc-tags }}
-
-      - name: Build and Push Frps
-        uses: docker/build-push-action@v2
-        with:
-          file: Dockerfile
-          platforms: linux/amd64,linux/arm64,linux/riscv64,linux/ppc64le,linux/s390x,linux/386,linux/mips64le,linux/mips64,linux/arm/v7,linux/arm/v6
-          build-args: |
-            "FRP_VERSION=${{ github.event.inputs.version }}"
-            "MODE=frps"
-          push: true
-          tags: ${{ github.event.inputs.frps-tags }}
+          tags: dup4/${{ matrix.mode }}:${{ github.event.inputs.tags }}
