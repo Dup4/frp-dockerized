@@ -16,7 +16,7 @@ RUN cd /root \
     && cp ./bin/${MODE} ./build/ \
     && cp ./conf/${MODE}.ini ./build/ \
     && cp /root/docker_entry.sh ./build/ \
-    && sed "s|MODE=frpc|MODE=${MODE}|" ./build/docker_entry.sh \
+    && sed -i "s|MODE=frpc|MODE=${MODE}|" ./build/docker_entry.sh \
     && chmod +x ./build/docker_entry.sh
 
 FROM alpine:3.15
