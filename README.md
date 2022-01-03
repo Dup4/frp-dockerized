@@ -2,7 +2,7 @@
 
 ## frps
 
-[![](https://dockeri.co/image/dup4/frps)](https://hub.docker.com/r/snowdreamtech/frps)
+[![](https://dockeri.co/image/dup4/frps)](https://hub.docker.com/u/dup4/frps)
 
 start frpc:
 
@@ -18,7 +18,7 @@ docker run \
 
 ## frpc
 
-[![](https://dockeri.co/image/dup4/frpc)](https://hub.docker.com/r/snowdreamtech/frpc)
+[![](https://dockeri.co/image/dup4/frpc)](https://hub.docker.com/u/dup4/frpc)
 
 start frpc:
 
