@@ -1,6 +1,6 @@
 FROM golang:1.17 AS build
 
-ARG FRP_VERSION=0.38.0
+ARG FRP_VERSION=v0.38.0
 ARG MODE=frpc
 
 USER root
